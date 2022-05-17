@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,300;0,700;1,500&display=swap');
+.boxForm{
+    max-width: 1000px;
+    max-height: 1000px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    justify-content:flex-start;
+    align-items:center;
+    background-color: orange;
+    border-radius: 10px;
+    padding: 20px;
+}
+.lineBox{
+
+    padding: auto;
+    background-color: #fff8ec44;
+    border-radius: 10px;
+    margin: 3px;
+
+}
+.titleCat{
+    font-family: 'Mali', cursive;
+    padding: 5px;
+
+}
+.inputSize{
+    font-family: 'Mali', cursive;
+    border-radius: 10%;
+    background-color: rgba(255, 255, 255, 0.767);
+}
+.data{
+    font-family: 'Mali', cursive;
+    width: 30px;
+    margin: 2px;
+    background-color: rgba(255, 255, 255, 0.767);
+}
