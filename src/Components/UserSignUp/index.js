@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { api } from "../../API/Api";
 
 
-export function Signup() {
+export function UserSignup() {
 
     const navigate = useNavigate();
     const [form, setForm] = useState({

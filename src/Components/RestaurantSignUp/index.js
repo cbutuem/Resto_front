@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { api } from "../../API/Api";
 
 
-export function Signup() {
+export function RestaurantSignup() {
 
     const navigate = useNavigate();
     const [form, setForm] = useState({
@@ -44,6 +44,7 @@ export function Signup() {
 
     }   try {
         const imgURL = await handleUpload();
+        
         await api.post("/restaurant/signup", { ...form, img: imgURL });
         navigate("/login");
 
