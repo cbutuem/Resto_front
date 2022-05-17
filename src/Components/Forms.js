@@ -55,6 +55,22 @@ export function Forms(props){
     }   catch (error) {
         console.log(error);
     }};
+
+    function handleclick(event){
+        const inicial = [...cat]
+           if(inicial.includes(event.target.value)){
+                const index = inicial.indexOf(event.target.value)
+                inicial.splice(index,1)
+                setCat(inicial)
+            }else{
+                inicial.push(event.target.value)
+                setCat(inicial)
+            }
+            console.log(cat, "cat final")
+        }
+
+    
+
     return(
         <>
             <div className = {style.boxForm}>
@@ -65,9 +81,9 @@ export function Forms(props){
                     </span>
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Data de Nascimento</label>
-                        <input className = {style.inputSize} className = {style.data} placeholder="dia"></input>
-                        <input className = {style.inputSize} className = {style.data} placeholder="mes"></input>
-                        <input className = {style.inputSize}  className = {style.data} placeholder="ano"></input>
+                        <input className = {style.data} placeholder="dia"></input>
+                        <input className = {style.data} placeholder="mes"></input>
+                        <input className = {style.data} placeholder="ano"></input>
                     </span>
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Email</label>
@@ -84,18 +100,9 @@ export function Forms(props){
                             value={cat}
                             onChange={handleChange}
                         />
-                        <button type= "button" onClick={()=> {
-
-                            if(cat.includes("Japones")){
-                                const index = cat.indexOf("Japones"); 
-                                setCat(...cat.splice(index,1));
-                            }else{
-                                setCat(...cat, "Japones")
-                                }
-                            console.log(cat);
-                            }}>Japones</button>
-                        <button type= "button" onClick={(event)=> setCat("Italiana")} value={form.favType = cat} name="favType" >Italiana</button>
-                        <button type= "button" onClick={(event)=> setCat("Coreana")} value={form.favType = cat} name="favType" > Coreana</button>
+                        <button type= "button" onClick={handleclick} value="Japones">Japones</button>
+                        <button type= "button" onClick={handleclick} value="Italiana">Italiana</button>
+                        <button type= "button" onClick={handleclick} value="Coreana"> Coreana</button>
 
                             
                     </span>
