@@ -8,11 +8,11 @@ export function Signup() {
     const navigate = useNavigate();
     const [form, setForm] = useState({
         name: "",
-        birth: "",
+        address: "",
+        city: "",
         email: "",
         password: "",
-        city: "",
-        favType: "",
+        foodCategory: "",
         imgUser: ""
     });
 
@@ -31,7 +31,7 @@ export function Signup() {
             const uploadData = new FormData();
             uploadData.append("picture", img);
 
-            const response = await api.post("/upload-user-image", uploadData);
+            const response = await api.post("/upload-restaurant-image", uploadData);
             return response.data.url;
 
         }   catch (error) {
@@ -44,7 +44,7 @@ export function Signup() {
 
     }   try {
         const imgURL = await handleUpload();
-        await api.post("/user/signup", { ...form, img: imgURL });
+        await api.post("/restaurant/signup", { ...form, img: imgURL });
         navigate("/login");
 
     }   catch (error) {
@@ -63,12 +63,20 @@ export function Signup() {
                 value={form.name}
                 onChange={handleChange}
             />
-            <label htmlFor="formBirth">Data de Nascimento:</label>
+            <label htmlFor="formAddress">Endereço:</label>
             <input
-                id="formBirth"
-                name="birth"
-                type="date"
-                value={form.birth}
+                id="formAddress"
+                name="address"
+                type="text"
+                value={form.address}
+                onChange={handleChange}
+            />
+            <label htmlFor="formCity">Cidade:</label>
+            <input
+                id="formCity"
+                name="city"
+                type="text"
+                value={form.city}
                 onChange={handleChange}
             />
             <label htmlFor="formEmail">E-mail:</label>
@@ -87,23 +95,15 @@ export function Signup() {
                 value={form.password}
                 onChange={handleChange}
             />
-            <label htmlFor="formCity">Cidade:</label>
+            <label htmlFor="formFoodCategory">Selecione sua culinária favorita:</label> {/* Discutir com o grupo! */}
             <input
-                id="formCity"
-                name="city"
-                type="text"
-                value={form.city}
-                onChange={handleChange}
-            />
-            <label htmlFor="formfavType">Selecione sua culinária favorita:</label> {/* Discutir com o grupo! */}
-            <input
-                id="foodType1"
+                id="formFoodCategory"
                 name="foodType1"
                 type="checkbox"
-                value={form.favType}
+                value={form.foodCategory}
                 onChange={handleChange}
             />
-            <label htmlFor="formimgUser">Selecione uma foto para o seu perfil:</label>
+            <label htmlFor="formimgUser">Selecione uma foto para o seu restaurante:</label>
             <input
                 id="formimgUser"
                 name="imgUser"
