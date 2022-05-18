@@ -42,7 +42,7 @@ export function UserSignup() {
     async function handleSubmit(event) {
         event.preventDefault();
 
-    }   try {
+       try {
         const imgURL = await handleUpload();
         await api.post("/user/signup", { ...form, img: imgURL });
         navigate("/login");
@@ -50,7 +50,6 @@ export function UserSignup() {
     }   catch (error) {
         console.log(error);
     }
-
 
     return (
 
@@ -97,7 +96,7 @@ export function UserSignup() {
             />
             <label htmlFor="formfavType">Selecione sua culinária favorita:</label> {/* Discutir com o grupo! */}
             <input
-                id="foodType1"
+                id="f"
                 name="foodType1"
                 type="checkbox"
                 value={form.favType}
