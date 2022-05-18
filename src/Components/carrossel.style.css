@@ -1,0 +1,19 @@
+.carrossel{
+    background-color: grey;
+    height: 300px;
+    width: 900px;
+    margin: 100px auto 100px auto;
+    display: flex;
+}
+.boxCarrossel{
+    background-color: hotpink;
+    display: flex;
+}
+.boxCarrossel h1{
+    display: flex;
+    justify-content:center;
+    background-color: green;
+}
+.carousel-item.active{
+    height: 300px;
+}

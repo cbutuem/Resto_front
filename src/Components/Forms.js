@@ -6,9 +6,14 @@ import { api } from "../API/Api";
 export function Forms(props){
     const navigate = useNavigate();
     const [cat, setCat] = useState([])
+    const [date, setDate] = useState({
+        dia:"",
+        mes:"",
+        ano:"",
+    });
     const [form, setForm] = useState({
         name: "",
-        birth: "",
+        birth: ``,
         email: "",
         password: "",
         city: "",
@@ -18,14 +23,14 @@ export function Forms(props){
 
     const [img, setImg] = useState("");
 
+    function handleDate(event){
+        setDate({ ...date, [event.target.name]: event.target.value });
+        setForm({ ...form, 'birth': `${date.ano}-${date.mes}-${date.dia}`});
+        console.log(form);
+    }
     function handleChange(event) {
         setForm({ ...form, [event.target.name]: event.target.value });
-    }
-    function handleTags(event){
-        const formData = { ...form };
-        const name= event.target.name
-        formData[name].push(cat);
-        setForm(formData);
+        console.log("HUNT",form);
     }
 
     function handleImage(event) {
@@ -55,6 +60,19 @@ export function Forms(props){
     }   catch (error) {
         console.log(error);
     }};
+
+    function handleclick(event){
+        const inicial = [...cat]
+           if(inicial.includes(event.target.value)){
+                const index = inicial.indexOf(event.target.value)
+                inicial.splice(index,1)
+                setCat(inicial)
+            }else{
+                inicial.push(event.target.value)
+                setCat(inicial)
+            }
+            console.log(cat, "cat final")
+        }
     return(
         <>
             <div className = {style.boxForm}>
@@ -65,9 +83,9 @@ export function Forms(props){
                     </span>
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Data de Nascimento</label>
-                        <input className = {style.inputSize} className = {style.data} placeholder="dia"></input>
-                        <input className = {style.inputSize} className = {style.data} placeholder="mes"></input>
-                        <input className = {style.inputSize}  className = {style.data} placeholder="ano"></input>
+                        <input className = {style.data} placeholder="dia" name="dia" value={date.dia} onChange={handleDate}></input>
+                        <input className = {style.data} placeholder="mes" name="mes" value={date.mes} onChange={handleDate}></input>
+                        <input className = {style.data} placeholder="ano" name="ano" value={date.ano} onChange={handleDate}></input>
                     </span>
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Email</label>
