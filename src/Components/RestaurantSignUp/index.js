@@ -96,7 +96,7 @@ export function RestaurantSignup() {
                 value={form.password}
                 onChange={handleChange}
             />
-            <label htmlFor="formFoodCategory">Selecione sua culinária favorita:</label> {/* Discutir com o grupo! */}
+            <label htmlFor="formFoodCategory">Selecione sua culinária favorita:</label> 
             <input
                 id="formFoodCategory"
                 name="foodType1"

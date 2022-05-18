@@ -1,0 +1,14 @@
+*{
+}
+
+.carrossel{
+    background-color: grey;
+    height: 300px;
+    width: 900px;
+    margin: 100px auto 100px auto;
+    display: flex;
+}
+
+.carousel-item.active{
+    height: 300px;
+}

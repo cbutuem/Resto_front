@@ -3,7 +3,6 @@ import { api } from "../../API/Api";
 // import { AuthContext } from "../../Contexts/authContexts";
 
 export function RestaurantProfile() {
-
     // const { loggedInUser } = useContext(AuthContext);
     const [restaurant, setRestaurant] = useState({
         name: "",
@@ -27,6 +26,5 @@ export function RestaurantProfile() {
             <p>Endereço: {restaurant.address}</p>
             <p>Cidade: {restaurant.city}</p>
             <p>Tipos de culinária favoritos: {restaurant.foodCategory}</p>
-        </div>
-    
+        </div>    
 }
