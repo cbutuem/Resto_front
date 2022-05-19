@@ -42,7 +42,7 @@ export function User_SignUp(props){
             const uploadData = new FormData();
             uploadData.append("picture", img);
 
-            const response = await api.post("/upload-user-image", uploadData);
+            const response = await api.post("/image/upload-image", uploadData);
             return response.data.url;
 
         }   catch (error) {

@@ -13,12 +13,12 @@ export function Restaurant_SignUp(props){
     });
     const [form, setForm] = useState({
         name: "",
-        birth: ``,
+        birth: "",
         email: "",
         password: "",
         city: "",
         contact: "",
-        favType: [],
+        foodCategory: [],
         imgUser: ""
     });
 
@@ -43,7 +43,7 @@ export function Restaurant_SignUp(props){
             const uploadData = new FormData();
             uploadData.append("picture", img);
 
-            const response = await api.post("/upload-user-image", uploadData);
+            const response = await api.post("/image/upload-image", uploadData);
             return response.data.url;
 
         }   catch (error) {
@@ -55,7 +55,7 @@ export function Restaurant_SignUp(props){
         event.preventDefault();
         try {
         const imgURL = await handleUpload();
-        await api.post("/user/signup", { ...form, img: imgURL });
+        await api.post("/restaurant/signup", { ...form, img: imgURL });
         navigate("/login");
 
     }   catch (error) {
