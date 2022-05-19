@@ -12,7 +12,7 @@ export function UserProfile() {
 
     useEffect(() => {
         async function fetchUser() {
-            const response = await api.get("/user/profile");
+            const response = await api.get("/user/user-profile");
             setUser(response.data);
         }
         fetchUser();
