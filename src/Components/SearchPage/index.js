@@ -53,7 +53,7 @@ export function SearchResults(props) {
         )})}
 
         {results.filter((result) => {
-            return (result.foodCategory).toLocaleLowerCase().includes(props.test)}).map((result) => {
+            return (result.foodCategory).includes(props.test)}).map((result) => {
                 return (                    
                     <li key={result.id}>
                         <p>{result.name}</p>
