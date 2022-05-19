@@ -1,15 +1,15 @@
 import style from "./Forms.module.css"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
-import { api } from "../API/Api";
+import { api } from "../../API/Api";
 
-export function Forms(props){
+export function Restaurant_SignUp(props){
     const navigate = useNavigate();
     const [cat, setCat] = useState([])
     const [date, setDate] = useState({
-        dia:"",
-        mes:"",
-        ano:"",
+        day:"",
+        month:"",
+        year:"",
     });
     const [form, setForm] = useState({
         name: "",
@@ -17,6 +17,7 @@ export function Forms(props){
         email: "",
         password: "",
         city: "",
+        contact: "",
         favType: [],
         imgUser: ""
     });
@@ -25,7 +26,7 @@ export function Forms(props){
 
     function handleDate(event){
         setDate({ ...date, [event.target.name]: event.target.value });
-        setForm({ ...form, 'birth': `${date.ano}-${date.mes}-${date.dia}`});
+        setForm({ ...form, 'birth': `${date.year}-${date.month}-${date.day}`});
         console.log(form);
     }
     function handleChange(event) {
@@ -73,20 +74,73 @@ export function Forms(props){
             }
             console.log(cat, "cat final")
         }
-
-    
-
     return(
         <>
             <div className = {style.boxForm}>
                 <form  onSubmit={handleSubmit}>
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Nome</label>
-                        <input className = {style.inputSize} id="formName" name="name" type="text" value={form.name} onChange={handleChange}></input>
+                        <input className = {style.inputSize} name="name" value={form.name} onChange={handleChange}></input>
                     </span>
                     <span className= {style.lineBox}>
-                    <label className = {style.titleCat}>Data de Nascimento</label>
+                        <label className = {style.titleCat}>Data de Nascimento</label>
                         <input className = {style.data} placeholder="dia" name="dia" value={date.dia} onChange={handleDate}></input>
                         <input className = {style.data} placeholder="mes" name="mes" value={date.mes} onChange={handleDate}></input>
                         <input className = {style.data} placeholder="ano" name="ano" value={date.ano} onChange={handleDate}></input>
                     </span>
+                    <span className= {style.lineBox}>
+                        <label className = {style.titleCat}>Email</label>
+                        <input className = {style.inputSize} name="email" value={form.email} onChange={handleChange}></input>
+                    </span>
+                    <span className= {style.lineBox}>
+                        <label className = {style.titleCat}>Cidade</label>
+                        <input className = {style.inputSize} name="city" value={form.city} onChange={handleChange}></input>
+                    </span>
+                    <span className= {style.lineBox}>
+                        <label className = {style.titleCat}>Endereço</label>
+                        <input className = {style.inputSize} name="adress" value={form.adress} onChange={handleChange}></input>
+                    </span>
+                    <span className= {style.lineBox}>
+                        <label className = {style.titleCat}>Contato</label>
+                        <input className = {style.inputSize} name="contact" value={form.contact} onChange={handleChange}></input>
+                    </span>
+                    
+                    
+                    <span className= {style.lineBox}>
+                        <label className = {style.titleCat}>Gastronomia favorita</label>
+                        <input className = {style.inputSize} placeholder="Gastronomia favorita"
+                            name="foodType1"
+                            value={cat}
+                            onChange={handleChange}
+                        />
+                        <button type= "button" onClick={handleclick} value="Japones">Japones</button>
+                        <button type= "button" onClick={handleclick} value="Italiana">Italiana</button>
+                        <button type= "button" onClick={handleclick} value="Coreana"> Coreana</button>         
+                    </span>
+                    
+                    <span className= {style.lineBox}>
+                        <label className = {style.titleCat}>Senha</label>
+                        <input 
+                            className = {style.inputSize} 
+                            type="password"
+                            name='password'
+                            onChange={handleChange}>
+                        </input>
+                    </span>
+                    
+                    <span className= {style.lineBox}>
+                        <label className = {style.titleCat}>Foto de perfil</label>
+                        <input className = {style.inputSize}   
+                            id="formimgUser"
+                            name="imgUser"
+                            type="file"
+                            onChange={handleImage}></input>
+                    </span>
+
+                    <button type="submit">Criar Conta</button>
+                </form>
+            </div>  
+        </>
+    );
+
+}

@@ -10,8 +10,8 @@ export function NavBar(props) {
     return (
         <div>
             <input type="search" placeholder="Busque por um restaurante por nome ou cidade!" onChange={handleChange}/>
-            <Link to={"/search"}><button>Buscar</button></Link> 
+            <Link to={"/search"}><button>Buscar</button></Link>
+            <Link to={"/Login"}><button>Login</button></Link>
         </div>
     )
 }
-    
