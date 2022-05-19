@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { api } from "../../API/Api";
-// import { AuthContext } from "../../Contexts/authContexts";
+import { AuthContext } from "../../Contexts/authContexts";
 
 export function UserProfile() {
 
-    // const { loggedInUser } = useContext(AuthContext);
+    const { loggedInUser } = useContext(AuthContext);
     const [user, setUser] = useState({
         name: "",
         email: ""

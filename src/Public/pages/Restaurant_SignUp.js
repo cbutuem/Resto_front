@@ -1,23 +1,25 @@
 import style from "./Forms.module.css"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
-import { api } from "../API/Api";
+import { api } from "../../API/Api";
 
-export function Forms(props){
+export function Restaurant_SignUp(props){
     const navigate = useNavigate();
     const [cat, setCat] = useState([])
     const [date, setDate] = useState({
-        dia:"",
-        mes:"",
-        ano:"",
+        day:"",
+        month:"",
+        year:"",
     });
     const [form, setForm] = useState({
         name: "",
-        birth: ``,
+        address: "",
+        birth: "",
         email: "",
         password: "",
         city: "",
-        favType: [],
+        contact: "",
+        foodCategory: [],
         imgUser: ""
     });
 
@@ -25,7 +27,7 @@ export function Forms(props){
 
     function handleDate(event){
         setDate({ ...date, [event.target.name]: event.target.value });
-        setForm({ ...form, 'birth': `${date.ano}-${date.mes}-${date.dia}`});
+        setForm({ ...form, 'birth': `${date.year}-${date.month}-${date.day}`});
         console.log(form);
     }
     function handleChange(event) {
@@ -42,7 +44,7 @@ export function Forms(props){
             const uploadData = new FormData();
             uploadData.append("picture", img);
 
-            const response = await api.post("/upload-user-image", uploadData);
+            const response = await api.post("/upload-image", uploadData);
             return response.data.url;
 
         }   catch (error) {
@@ -54,7 +56,7 @@ export function Forms(props){
         event.preventDefault();
         try {
         const imgURL = await handleUpload();
-        await api.post("/user/signup", { ...form, img: imgURL });
+        await api.post("/restaurant/signup", { ...form, img: imgURL, foodCategory: cat});
         navigate("/login");
 
     }   catch (error) {
@@ -83,9 +85,9 @@ export function Forms(props){
                     </span>
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Data de Nascimento</label>
-                        <input className = {style.data} placeholder="dia" name="dia" value={date.dia} onChange={handleDate}></input>
-                        <input className = {style.data} placeholder="mes" name="mes" value={date.mes} onChange={handleDate}></input>
-                        <input className = {style.data} placeholder="ano" name="ano" value={date.ano} onChange={handleDate}></input>
+                        <input className = {style.data} placeholder="dia" name="day" value={date.day} onChange={handleDate}></input>
+                        <input className = {style.data} placeholder="mes" name="month" value={date.month} onChange={handleDate}></input>
+                        <input className = {style.data} placeholder="ano" name="year" value={date.year} onChange={handleDate}></input>
                     </span>
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Email</label>
@@ -93,15 +95,15 @@ export function Forms(props){
                     </span>
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Cidade</label>
-                        <input className = {style.inputSize} name="cidade" value={form.cidade} onChange={handleChange}></input>
+                        <input className = {style.inputSize} name="city" value={form.city} onChange={handleChange}></input>
                     </span>
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Endereço</label>
-                        <input className = {style.inputSize} name="endereco" value={form.endereco} onChange={handleChange}></input>
+                        <input className = {style.inputSize} name="address" value={form.address} onChange={handleChange}></input>
                     </span>
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Contato</label>
-                        <input className = {style.inputSize} name="contato" value={form.contato} onChange={handleChange}></input>
+                        <input className = {style.inputSize} name="contact" value={form.contact} onChange={handleChange}></input>
                     </span>
                     
                     
