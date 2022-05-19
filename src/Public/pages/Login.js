@@ -52,8 +52,10 @@ export function Login(){
                         onChange={handleChange}>
                     </input>
                 </span>
-                <input type="radio"></input>
+                <label>oiii</label>
+                <input type="radio" ></input>
                 <button type="submit">Entrar</button>
+                
             </form>
             <p><Link to="/signup/user">Cadastrar</Link></p>
             <Link to="/singip/restaurant">Cadastrar restaurante</Link>
