@@ -24,9 +24,6 @@ export function SearchResults(props) {
 
     console.log(results)
 
-
-  
-
     const params = useParams()
 
     return (
@@ -40,7 +37,8 @@ export function SearchResults(props) {
                 return (                    
                     <li key={result.id}>
                         <p>{result.name}</p>
-                        <p></p>
+                        <p>{result.cidade}</p>
+                        {/* <p><img src={require(result.imgUser)} alt='imagem restaurante'/></p> */}
                     </li>
         )})}
 

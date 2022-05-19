@@ -15,6 +15,7 @@ function App() {
     <Routes>
       <Route path="/" element ={<Forms/>}/>
       <Route path="/search" element ={<SearchResults test={test} />}/>
+      <Route path="/user/user-profile" />
     </Routes>
       <Carrossel />
     </div>
