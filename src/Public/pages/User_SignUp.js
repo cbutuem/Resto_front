@@ -54,7 +54,7 @@ export function User_SignUp(props){
         event.preventDefault();
         try {
         const imgURL = await handleUpload();
-        await api.post("/user/signup", { ...form, img: imgURL });
+        await api.post("/user/signup", { ...form, img: imgURL,favType: cat });
         navigate("/login");
 
     }   catch (error) {

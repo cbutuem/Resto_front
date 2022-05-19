@@ -22,7 +22,7 @@ function App() {
       <Route path="/user/user-profile" element={<UserProfile />}/>
       <Route path="/" element={<Login/>}/>
       <Route path="/signup/user" element={<User_SignUp/>}/>
-      <Route path="/signup/user" element={<Restaurant_SignUp/>}/>
+      <Route path="/signup/restaurant" element={<Restaurant_SignUp/>}/>
 
     </Routes>
       <Carrossel />

@@ -18,7 +18,7 @@ export function Restaurant_SignUp(props){
         password: "",
         city: "",
         contact: "",
-        favType: [],
+        foodCategory: [],
         imgUser: ""
     });
 
@@ -43,7 +43,7 @@ export function Restaurant_SignUp(props){
             const uploadData = new FormData();
             uploadData.append("picture", img);
 
-            const response = await api.post("/upload-user-image", uploadData);
+            const response = await api.post("/upload-image", uploadData);
             return response.data.url;
 
         }   catch (error) {
@@ -55,7 +55,7 @@ export function Restaurant_SignUp(props){
         event.preventDefault();
         try {
         const imgURL = await handleUpload();
-        await api.post("/user/signup", { ...form, img: imgURL });
+        await api.post("/restaurant/signup", { ...form, img: imgURL, foodCategory: cat});
         navigate("/login");
 
     }   catch (error) {
@@ -84,9 +84,9 @@ export function Restaurant_SignUp(props){
                     </span>
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Data de Nascimento</label>
-                        <input className = {style.data} placeholder="dia" name="dia" value={date.dia} onChange={handleDate}></input>
-                        <input className = {style.data} placeholder="mes" name="mes" value={date.mes} onChange={handleDate}></input>
-                        <input className = {style.data} placeholder="ano" name="ano" value={date.ano} onChange={handleDate}></input>
+                        <input className = {style.data} placeholder="dia" name="day" value={date.day} onChange={handleDate}></input>
+                        <input className = {style.data} placeholder="mes" name="month" value={date.month} onChange={handleDate}></input>
+                        <input className = {style.data} placeholder="ano" name="year" value={date.year} onChange={handleDate}></input>
                     </span>
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Email</label>
