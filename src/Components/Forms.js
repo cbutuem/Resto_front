@@ -79,7 +79,7 @@ export function Forms(props){
                 <form  onSubmit={handleSubmit}>
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Nome</label>
-                        <input className = {style.inputSize}></input>
+                        <input className = {style.inputSize} name="name" value={form.name} onChange={handleChange}></input>
                     </span>
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Data de Nascimento</label>
@@ -89,11 +89,11 @@ export function Forms(props){
                     </span>
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Email</label>
-                        <input className = {style.inputSize}></input>
+                        <input className = {style.inputSize} name="email" value={form.email} onChange={handleChange}></input>
                     </span>
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Cidade</label>
-                        <input className = {style.inputSize}></input>
+                        <input className = {style.inputSize} name="cidade" value={form.cidade} onChange={handleChange}></input>
                     </span>
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Gastronomia favorita</label>
@@ -102,33 +102,28 @@ export function Forms(props){
                             value={cat}
                             onChange={handleChange}
                         />
-                        <button type= "button" onClick={()=> {
-
-                            if(cat.includes("Japones")){
-                                const index = cat.indexOf("Japones"); 
-                                setCat(...cat.splice(index,1));
-                            }else{
-                                setCat(...cat, "Japones")
-                                }
-                            console.log(cat);
-                            }}>Japones</button>
-                        <button type= "button" onClick={(event)=> setCat("Italiana")} value={form.favType = cat} name="favType" >Italiana</button>
-                        <button type= "button" onClick={(event)=> setCat("Coreana")} value={form.favType = cat} name="favType" > Coreana</button>
-
-                            
+                        <button type= "button" onClick={handleclick} value="Japones">Japones</button>
+                        <button type= "button" onClick={handleclick} value="Italiana">Italiana</button>
+                        <button type= "button" onClick={handleclick} value="Coreana"> Coreana</button>         
                     </span>
+                    
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Senha</label>
-                        <input className = {style.inputSize}></input>
+                        <input 
+                            className = {style.inputSize} 
+                            type="password"
+                            name='password'
+                            onChange={handleChange}>
+                        </input>
                     </span>
+                    
                     <span className= {style.lineBox}>
-                        <label className = {style.titleCat}>Senha</label>
+                        <label className = {style.titleCat}>Foto de perfil</label>
                         <input className = {style.inputSize}   
                             id="formimgUser"
                             name="imgUser"
                             type="file"
-                            value={form.imgUser}
-                            onChange={handleChange}></input>
+                            onChange={handleImage}></input>
                     </span>
 
                     <button type="submit">Criar Conta</button>

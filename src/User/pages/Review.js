@@ -1,9 +1,9 @@
-import style from "./Forms.module.css"
+import style from "../../Components/Forms.module.css"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
-import { api } from "../API/Api";
+import { api } from "../../API/Api";
 
-export function Forms(props){
+export function Review(props){
     const navigate = useNavigate();
     const [cat, setCat] = useState([])
     const [date, setDate] = useState({
@@ -96,16 +96,6 @@ export function Forms(props){
                         <input className = {style.inputSize} name="cidade" value={form.cidade} onChange={handleChange}></input>
                     </span>
                     <span className= {style.lineBox}>
-                        <label className = {style.titleCat}>Endereço</label>
-                        <input className = {style.inputSize} name="endereco" value={form.endereco} onChange={handleChange}></input>
-                    </span>
-                    <span className= {style.lineBox}>
-                        <label className = {style.titleCat}>Contato</label>
-                        <input className = {style.inputSize} name="contato" value={form.contato} onChange={handleChange}></input>
-                    </span>
-                    
-                    
-                    <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Gastronomia favorita</label>
                         <input className = {style.inputSize} placeholder="Gastronomia favorita"
                             name="foodType1"
@@ -128,7 +118,7 @@ export function Forms(props){
                     </span>
                     
                     <span className= {style.lineBox}>
-                        <label className = {style.titleCat}>Foto de perfil</label>
+                        <label className = {style.titleCat}>Foto do prato</label>
                         <input className = {style.inputSize}   
                             id="formimgUser"
                             name="imgUser"
