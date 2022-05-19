@@ -13,6 +13,7 @@ export function Restaurant_SignUp(props){
     });
     const [form, setForm] = useState({
         name: "",
+        address: "",
         birth: "",
         email: "",
         password: "",
@@ -55,7 +56,7 @@ export function Restaurant_SignUp(props){
         event.preventDefault();
         try {
         const imgURL = await handleUpload();
-        await api.post("/restaurant/signup", { ...form, img: imgURL });
+        await api.post("/restaurant/signup", { ...form, img: imgURL, foodCategory: cat});
         navigate("/login");
 
     }   catch (error) {
@@ -84,9 +85,9 @@ export function Restaurant_SignUp(props){
                     </span>
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Data de Nascimento</label>
-                        <input className = {style.data} placeholder="dia" name="dia" value={date.dia} onChange={handleDate}></input>
-                        <input className = {style.data} placeholder="mes" name="mes" value={date.mes} onChange={handleDate}></input>
-                        <input className = {style.data} placeholder="ano" name="ano" value={date.ano} onChange={handleDate}></input>
+                        <input className = {style.data} placeholder="dia" name="day" value={date.day} onChange={handleDate}></input>
+                        <input className = {style.data} placeholder="mes" name="month" value={date.month} onChange={handleDate}></input>
+                        <input className = {style.data} placeholder="ano" name="year" value={date.year} onChange={handleDate}></input>
                     </span>
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Email</label>
@@ -98,7 +99,7 @@ export function Restaurant_SignUp(props){
                     </span>
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Endereço</label>
-                        <input className = {style.inputSize} name="adress" value={form.adress} onChange={handleChange}></input>
+                        <input className = {style.inputSize} name="address" value={form.address} onChange={handleChange}></input>
                     </span>
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Contato</label>
