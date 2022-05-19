@@ -103,11 +103,7 @@ export function Forms(props){
 
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Nome</label>
-                        <input 
-                        className = {style.inputSize}
-                        name='name'
-                        onChange={handleChange}
-                        ></input>
+                        <input className = {style.inputSize} name="name" value={form.name} onChange={handleChange}></input>
                     </span>
 
                     <span className= {style.lineBox}>
@@ -119,20 +115,12 @@ export function Forms(props){
 
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Email</label>
-                        <input 
-                        className = {style.inputSize}
-                        name='email'
-                        onChange={handleChange}
-                        ></input>
+                        <input className = {style.inputSize} name="email" value={form.email} onChange={handleChange}></input>
                     </span>
 
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Cidade</label>
-                        <input 
-                        className = {style.inputSize}
-                        name='city'
-                        onChange={handleChange}
-                        ></input>
+                        <input className = {style.inputSize} name="cidade" value={form.cidade} onChange={handleChange}></input>
                     </span>
 
                     <span className= {style.lineBox}>

@@ -8,11 +8,8 @@ import { NavBar } from "./Components/TesteBar";
 import { SearchResults } from "./Components/SearchPage";
 import { UserProfile } from "./Components/UserProfile";
 
-
-
-
-
-
+import { Login } from "./Public/pages/Login";
+import {Review} from "./User/pages/Review"
 function App() {
   const [test, setTest] = useState()
  
@@ -23,6 +20,9 @@ function App() {
       <Route path="/" element ={<Forms/>}/>
       <Route path="/search" element ={<SearchResults test={test} />}/>
       <Route path="/user/user-profile" element={<UserProfile />} />
+      <Route path="/forms" element ={<Forms/>}/>
+      <Route path="/Review" element ={<Review/>}/>
+      <Route path="/" element={<Login/>}/>
     </Routes>
       <Carrossel />
     <Booking />

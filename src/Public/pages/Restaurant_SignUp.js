@@ -73,20 +73,73 @@ export function Forms(props){
             }
             console.log(cat, "cat final")
         }
-
-    
-
     return(
         <>
             <div className = {style.boxForm}>
                 <form  onSubmit={handleSubmit}>
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Nome</label>
-                        <input className = {style.inputSize} id="formName" name="name" type="text" value={form.name} onChange={handleChange}></input>
+                        <input className = {style.inputSize} name="name" value={form.name} onChange={handleChange}></input>
                     </span>
                     <span className= {style.lineBox}>
-                    <label className = {style.titleCat}>Data de Nascimento</label>
+                        <label className = {style.titleCat}>Data de Nascimento</label>
                         <input className = {style.data} placeholder="dia" name="dia" value={date.dia} onChange={handleDate}></input>
                         <input className = {style.data} placeholder="mes" name="mes" value={date.mes} onChange={handleDate}></input>
                         <input className = {style.data} placeholder="ano" name="ano" value={date.ano} onChange={handleDate}></input>
                     </span>
+                    <span className= {style.lineBox}>
+                        <label className = {style.titleCat}>Email</label>
+                        <input className = {style.inputSize} name="email" value={form.email} onChange={handleChange}></input>
+                    </span>
+                    <span className= {style.lineBox}>
+                        <label className = {style.titleCat}>Cidade</label>
+                        <input className = {style.inputSize} name="cidade" value={form.cidade} onChange={handleChange}></input>
+                    </span>
+                    <span className= {style.lineBox}>
+                        <label className = {style.titleCat}>Endereço</label>
+                        <input className = {style.inputSize} name="endereco" value={form.endereco} onChange={handleChange}></input>
+                    </span>
+                    <span className= {style.lineBox}>
+                        <label className = {style.titleCat}>Contato</label>
+                        <input className = {style.inputSize} name="contato" value={form.contato} onChange={handleChange}></input>
+                    </span>
+                    
+                    
+                    <span className= {style.lineBox}>
+                        <label className = {style.titleCat}>Gastronomia favorita</label>
+                        <input className = {style.inputSize} placeholder="Gastronomia favorita"
+                            name="foodType1"
+                            value={cat}
+                            onChange={handleChange}
+                        />
+                        <button type= "button" onClick={handleclick} value="Japones">Japones</button>
+                        <button type= "button" onClick={handleclick} value="Italiana">Italiana</button>
+                        <button type= "button" onClick={handleclick} value="Coreana"> Coreana</button>         
+                    </span>
+                    
+                    <span className= {style.lineBox}>
+                        <label className = {style.titleCat}>Senha</label>
+                        <input 
+                            className = {style.inputSize} 
+                            type="password"
+                            name='password'
+                            onChange={handleChange}>
+                        </input>
+                    </span>
+                    
+                    <span className= {style.lineBox}>
+                        <label className = {style.titleCat}>Foto de perfil</label>
+                        <input className = {style.inputSize}   
+                            id="formimgUser"
+                            name="imgUser"
+                            type="file"
+                            onChange={handleImage}></input>
+                    </span>
+
+                    <button type="submit">Criar Conta</button>
+                </form>
+            </div>  
+        </>
+    );
+
+}
