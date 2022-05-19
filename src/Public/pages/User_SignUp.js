@@ -13,7 +13,7 @@ export function User_SignUp(props){
     });
     const [form, setForm] = useState({
         name: "",
-        birth: ``,
+        birth: "",
         email: "",
         password: "",
         city: "",

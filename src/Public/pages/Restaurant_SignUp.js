@@ -13,7 +13,8 @@ export function Restaurant_SignUp(props){
     });
     const [form, setForm] = useState({
         name: "",
-        birth: ``,
+        address: "",
+        birth: "",
         email: "",
         password: "",
         city: "",
@@ -98,7 +99,7 @@ export function Restaurant_SignUp(props){
                     </span>
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Endereço</label>
-                        <input className = {style.inputSize} name="adress" value={form.adress} onChange={handleChange}></input>
+                        <input className = {style.inputSize} name="address" value={form.address} onChange={handleChange}></input>
                     </span>
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Contato</label>
