@@ -2,15 +2,11 @@ import style from "../../Components/Forms.module.css"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
 import { api } from "../../API/Api";
+import Rating from "../components/Rating"
 
 export function Review(props){
     const navigate = useNavigate();
     const [cat, setCat] = useState([])
-    const [date, setDate] = useState({
-        dia:"",
-        mes:"",
-        ano:"",
-    });
     const [form, setForm] = useState({
         name: "",
         birth: ``,
@@ -23,11 +19,6 @@ export function Review(props){
 
     const [img, setImg] = useState("");
 
-    function handleDate(event){
-        setDate({ ...date, [event.target.name]: event.target.value });
-        setForm({ ...form, 'birth': `${date.ano}-${date.mes}-${date.dia}`});
-        console.log(form);
-    }
     function handleChange(event) {
         setForm({ ...form, [event.target.name]: event.target.value });
         console.log("HUNT",form);
@@ -54,7 +45,7 @@ export function Review(props){
         event.preventDefault();
         try {
         const imgURL = await handleUpload();
-        await api.post("/user/signup", { ...form, img: imgURL });
+        await api.post("/user/idRestaurante", { ...form, img: imgURL });
         navigate("/login");
 
     }   catch (error) {
@@ -78,45 +69,27 @@ export function Review(props){
             <div className = {style.boxForm}>
                 <form  onSubmit={handleSubmit}>
                     <span className= {style.lineBox}>
-                        <label className = {style.titleCat}>Nome</label>
-                        <input className = {style.inputSize} name="name" value={form.name} onChange={handleChange}></input>
-                    </span>
-                    <span className= {style.lineBox}>
-                        <label className = {style.titleCat}>Data de Nascimento</label>
-                        <input className = {style.data} placeholder="dia" name="dia" value={date.dia} onChange={handleDate}></input>
-                        <input className = {style.data} placeholder="mes" name="mes" value={date.mes} onChange={handleDate}></input>
-                        <input className = {style.data} placeholder="ano" name="ano" value={date.ano} onChange={handleDate}></input>
-                    </span>
-                    <span className= {style.lineBox}>
-                        <label className = {style.titleCat}>Email</label>
-                        <input className = {style.inputSize} name="email" value={form.email} onChange={handleChange}></input>
-                    </span>
-                    <span className= {style.lineBox}>
-                        <label className = {style.titleCat}>Cidade</label>
-                        <input className = {style.inputSize} name="cidade" value={form.cidade} onChange={handleChange}></input>
-                    </span>
-                    <span className= {style.lineBox}>
-                        <label className = {style.titleCat}>Gastronomia favorita</label>
+                        <label className = {style.titleCat}>Tags</label>
                         <input className = {style.inputSize} placeholder="Gastronomia favorita"
                             name="foodType1"
                             value={cat}
                             onChange={handleChange}
                         />
-                        <button type= "button" onClick={handleclick} value="Japones">Japones</button>
-                        <button type= "button" onClick={handleclick} value="Italiana">Italiana</button>
-                        <button type= "button" onClick={handleclick} value="Coreana"> Coreana</button>         
+                        <button type= "button" onClick={handleclick} value="Romantico">Romantico</button>
+                        <button type= "button" onClick={handleclick} value="Bom e Barato">Bom e Barato</button>
+                        <button type= "button" onClick={handleclick} value="Ar livre">Ar livre</button>         
                     </span>
                     
                     <span className= {style.lineBox}>
-                        <label className = {style.titleCat}>Senha</label>
+                        <label className = {style.titleCat}>Comentario</label>
                         <input 
                             className = {style.inputSize} 
-                            type="password"
-                            name='password'
+                            type="comentario"
+                            name='comentario'
                             onChange={handleChange}>
                         </input>
                     </span>
-                    
+                    <Rating/>
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Foto do prato</label>
                         <input className = {style.inputSize}   
@@ -126,7 +99,7 @@ export function Review(props){
                             onChange={handleImage}></input>
                     </span>
 
-                    <button type="submit">Criar Conta</button>
+                    <button type="submit">Avaliar</button>
                 </form>
             </div>  
         </>
