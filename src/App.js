@@ -10,6 +10,8 @@ import { SearchResults } from "./Components/SearchPage";
 import { UserProfile } from "./Components/UserProfile";
 import { Login } from "../src/Public/pages/Login";
 import { RestaurantProfile } from "./Components/RestaurantProfile";
+import { RestaurantPage } from "./User/pages/RestaurantPage"
+
 
 
 function App() {
@@ -26,12 +28,13 @@ function App() {
       <Route path="/login" element={<Login/>}/>
       <Route path="/signup/user" element={<User_SignUp/>}/>
       <Route path="/signup/restaurant" element={<Restaurant_SignUp/>}/>
+      <Route path="/restaurantpage/:restaurantId" element={<RestaurantPage/>}/>
+      <Route path="/booking/:restaurantId" element={<Booking />}/>
 
     </Routes>
-      <Carrossel />
-      <Booking />
     </div>
   );
 }
 
 export default App;
+
