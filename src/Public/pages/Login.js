@@ -32,7 +32,9 @@ export function Login(){
         
         if(profile === 'user'){
             try{
-                await api.post("/user/login", form)
+                const response = await api.post("/user/login", form)
+                localStorage.setItem("loggedInUser", JSON.stringify(response.data))
+
                 navigate("/homeuser")
 
             }catch(error){console.log(error)}
@@ -40,7 +42,8 @@ export function Login(){
 
         if(profile === 'restaurant'){
             try{
-                await api.post("/restaurant/login", form)
+                const response = await api.post("/restaurant/login", form)
+                localStorage.setItem("loggedInUser", JSON.stringify(response.data))
                 navigate("/restaurantuser")
 
             }catch(error){console.log(error)}

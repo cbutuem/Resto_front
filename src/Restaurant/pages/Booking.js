@@ -13,12 +13,14 @@ export function Booking(){
         data:"",
         horario: "",
         pessoas: 7,
+        usermail: ""
     })
 
-    /*useEffect(()=>{
-        const usuario = localStorage.getItem(user)
-        setUser(usuario)
-    },[])*/
+    useEffect(()=>{
+        const usuario = localStorage.getItem("loggedInUser")
+        const format = JSON.parse(usuario)
+        setUser(format.user)
+    },[])
 
     function handleDate(date){
         setStartDate(date)
@@ -38,13 +40,14 @@ export function Booking(){
         const dataAtualFormatada = (adicionaZero(startDate.getDate()).toString()) + "/" + (adicionaZero(startDate.getMonth()+1).toString()) + "/" + startDate.getFullYear();
         setDate(dataAtualFormatada)
 
-        setBookForm({ ...bookForm, [event.target.name]: event.target.value, data: date, user:"Hudson"});
+        setBookForm({ ...bookForm, [event.target.name]: event.target.value, data: date, user: user.name, usermail: user.email});
     }
 
     async function sendMail(){
         try{
             console.log(bookForm)
-            await api.post("mail/sendmail/628249a4e691f4d308080eb5", bookForm)
+            console.log(user)
+            await api.post("/mail/sendmail/628249a4e691f4d308080eb5", bookForm)
             
         } catch(error){
             console.log(error)}

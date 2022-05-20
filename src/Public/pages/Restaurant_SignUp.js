@@ -56,7 +56,7 @@ export function Restaurant_SignUp(props){
         event.preventDefault();
         try {
         const imgURL = await handleUpload();
-        await api.post("/restaurant/signup", { ...form, img: imgURL, foodCategory: cat});
+        await api.post("/restaurant/signup", { ...form, imgUser: imgURL, foodCategory: cat});
         navigate("/login");
 
     }   catch (error) {

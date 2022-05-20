@@ -54,7 +54,7 @@ export function User_SignUp(props){
         event.preventDefault();
         try {
         const imgURL = await handleUpload();
-        await api.post("/user/signup", { ...form, img: imgURL,favType: cat });
+        await api.post("/user/signup", { ...form, imgUser: imgURL,favType: cat });
         navigate("/login");
 
     }   catch (error) {
@@ -83,9 +83,9 @@ export function User_SignUp(props){
                     </span>
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Data de Nascimento</label>
-                        <input className = {style.data} placeholder="dia" name="dia" value={date.day} onChange={handleDate}></input>
-                        <input className = {style.data} placeholder="mes" name="mes" value={date.month} onChange={handleDate}></input>
-                        <input className = {style.data} placeholder="ano" name="ano" value={date.year} onChange={handleDate}></input>
+                        <input className = {style.data} placeholder="dia" name="day"  onChange={handleDate}></input>
+                        <input className = {style.data} placeholder="mes" name="month"  onChange={handleDate}></input>
+                        <input className = {style.data} placeholder="ano" name="year"  onChange={handleDate}></input>
                     </span>
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Email</label>

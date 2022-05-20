@@ -9,23 +9,16 @@ export function SearchResults(props) {
     console.log(props.test)
 
     const [results, setResults] = useState([])
-    const [search, setSearch] = useState()
-    const [isLoading, setIsLoading] = useState(true);
 
 
     useEffect(() => {
         async function fetchResults() {
             const response = await api.get("/restaurant/all-restaurants")
             setResults(response.data)
-            setIsLoading(false);
-            console.log(results[0].foodCategory);
         }
         fetchResults();
     }, []);
 
-    console.log(results[0]);
-
-    const params = useParams()
 
     return (
         <div>
