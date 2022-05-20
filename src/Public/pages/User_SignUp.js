@@ -42,7 +42,7 @@ export function User_SignUp(props){
             const uploadData = new FormData();
             uploadData.append("picture", img);
 
-            const response = await api.post("/upload-user-image", uploadData);
+            const response = await api.post("/image/upload-image", uploadData);
             return response.data.url;
 
         }   catch (error) {
@@ -54,7 +54,7 @@ export function User_SignUp(props){
         event.preventDefault();
         try {
         const imgURL = await handleUpload();
-        await api.post("/user/signup", { ...form, img: imgURL,favType: cat });
+        await api.post("/user/signup", { ...form, imgUser: imgURL,favType: cat });
         navigate("/login");
 
     }   catch (error) {
@@ -81,12 +81,12 @@ export function User_SignUp(props){
                         <label className = {style.titleCat}>Nome</label>
                         <input className = {style.inputSize} name="name" value={form.name} onChange={handleChange}></input>
                     </span>
-                    {/* <span className= {style.lineBox}>
+                    <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Data de Nascimento</label>
-                        <input className = {style.data} placeholder="dia" name="dia" value={date.day} onChange={handleDate}></input>
-                        <input className = {style.data} placeholder="mes" name="mes" value={date.month} onChange={handleDate}></input>
-                        <input className = {style.data} placeholder="ano" name="ano" value={date.year} onChange={handleDate}></input>
-                    </span> */}
+                        <input className = {style.data} placeholder="dia" name="day"  onChange={handleDate}></input>
+                        <input className = {style.data} placeholder="mes" name="month"  onChange={handleDate}></input>
+                        <input className = {style.data} placeholder="ano" name="year"  onChange={handleDate}></input>
+                    </span>
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Email</label>
                         <input className = {style.inputSize} name="email" value={form.email} onChange={handleChange}></input>

@@ -1,38 +1,59 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
+
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom"
 import { api } from "../../API/Api"
 export function Login(){
     const navigate = useNavigate();
-    const [user, setUser] = useState({});
+
+    const [profile, setProfile] = useState('user');
+
     const [form, setForm] = useState({
         email: "",
         password: "",
     });
+
     function handleChange(event) {
         setForm({ ...form, [event.target.name]: event.target.value });
         console.log("HUNT",form);
     }
 
-    useEffect(() => {
-        async function fetchData(){
-            const response = await api.get('restaurant/all-restaurants');
-            setUser(response.data);
-        }
-        fetchData();
-    },[])
-
-
-        async function handleLogin(){
-            const response = await api.post('user/signup', form);
-            setUser(response.data);
-        }
-
+    function userClick(){
+        setProfile('user')
     
+    }
+
+    function restaurantClick(){
+        setProfile('restaurant')
+       
+    }
+
+    async function handleSubmit(event){
+        event.preventDefault()
+        
+        if(profile === 'user'){
+            try{
+                const response = await api.post("/user/login", form)
+                localStorage.setItem("loggedInUser", JSON.stringify(response.data))
+
+                navigate("/homeuser")
+
+            }catch(error){console.log(error)}
+        } 
+
+        if(profile === 'restaurant'){
+            try{
+                const response = await api.post("/restaurant/login", form)
+                localStorage.setItem("loggedInUser", JSON.stringify(response.data))
+                navigate("/restaurantuser")
+
+            }catch(error){console.log(error)}
+        }
+    }
+   
     
     return(
         <>
-            <form onSubmit={handleLogin}>
+            <form>
                 <span >
                     <label >Email</label>
                     <input 
@@ -51,13 +72,18 @@ export function Login(){
                         onChange={handleChange}>
                     </input>
                 </span>
-                <label>oiii</label>
-                <input type="radio" ></input>
-                <button type="submit">Entrar</button>
+               
+                <input type="radio" name="type" onClick={userClick} placeholder="usuario"/>  Sou Cliente
+            
+               
+                <input type="radio" name="type" onClick={restaurantClick} placeholder="usuario" /> <br/> Sou restaurante
                 
+                <button type="submit" onClick={handleSubmit}>Entrar</button>
             </form>
+
+            
             <p><Link to="/signup/user">Cadastrar</Link></p>
-            <Link to="/singip/restaurant">Cadastrar restaurante</Link>
+            <Link to="/signup/restaurant">Cadastrar restaurante</Link>
 
         </>
     );

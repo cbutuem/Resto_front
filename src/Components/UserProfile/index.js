@@ -6,16 +6,22 @@ export function UserProfile() {
 
 
     const [user, setUser] = useState({});
+    const [profile, setProfile] = useState();
+
 
     useEffect(() => {
+        const usuario = localStorage.getItem("loggedInUser");
+        const format = JSON.parse(usuario);
+        setUser(format.user)
+
         async function fetchUser() {
-            const response = await api.get("/user/user-profile");
-            setUser(response.data);
+            const response = await api.get("/user/user-profile", user);
+            setProfile(response.data);
         }
         fetchUser();
     }, []);
 
-    return 
+    return (
         <div>
             <h1>Perfil do Usuário</h1>
             <p>Imagem: <img src={user.imgUser} alt="user picture"/></p>
@@ -25,5 +31,5 @@ export function UserProfile() {
             <p>Cidade: {user.city}</p>
             {/* <p>Tipos de culinária favoritos: {user.favType}</p> Fazer Map */}
         </div>
-    
+    )
 }
