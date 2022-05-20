@@ -23,13 +23,14 @@ export function UserProfile() {
 
     return (
         <div>
-            <h1>Perfil do Usuário</h1>
-            <p>Imagem: <img src={user.imgUser} alt="user picture"/></p>
-            <p>Nome: {user.name}</p>
-            <p>Endereço de E-mail: {user.email}</p>
-            <p>Data de Nascimento: {user.birth}</p>
-            <p>Cidade: {user.city}</p>
+            <div className= "PerfilRestaurante">
+                <h1><strong>Olá </strong>{user.name}</h1>
+                <p><img src={user.imgUser} alt="user picture"/></p>
+                <p><strong>E-mail:</strong>{user.email}</p>
+                <p><strong>Data de Nascimento:</strong>{user.birth}</p>
+                <p><strong>Cidade:</strong>{user.city}</p>
             {/* <p>Tipos de culinária favoritos: {user.favType}</p> Fazer Map */}
+            </div>
         </div>
     )
 }

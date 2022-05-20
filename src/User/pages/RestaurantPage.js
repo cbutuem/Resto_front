@@ -23,11 +23,12 @@ export function RestaurantPage(){
 
     return(
         <>
-            <img src={restaurant.imgUser} alt='restaurant'/>
-            <h1>{restaurant.name}</h1>
-            <h3>{restaurant.city}</h3>
-            <Link to={`/booking/${restaurantId}`}>Agendar</Link>
-
+            <div className="PerfilRestaurante">
+                <img src={restaurant.imgUser} alt='restaurant'/>
+                <h1><strong>{restaurant.name}</strong></h1>
+                <h3>{restaurant.city}</h3>
+                <Link to={`/booking/${restaurantId}`}>Agendar</Link>
+            </div>
         </>
     )
 }

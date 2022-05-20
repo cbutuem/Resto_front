@@ -24,13 +24,14 @@ export function RestaurantProfile() {
 
     return (
         <div>
-            <h1>Perfil do Restaurante</h1>
-            <p>Imagem: <img src={restaurant.imgUser} alt="restaurant picture"/></p>
-            <p>Nome: {restaurant.name}</p>
-            <p>Endereço de E-mail: {restaurant.email}</p>
-            <p>Endereço: {restaurant.address}</p>
-            <p>Cidade: {restaurant.city}</p>
+            <div className= "PerfilRestaurante">
+            <h1><strong>Olá </strong> {restaurant.name}</h1>
+            <p><img src={restaurant.imgUser} alt="restaurant picture"/></p>
+            <p><strong>Endereço de E-mail:</strong> {restaurant.email}</p>
+            <p><strong>Endereço:</strong> {restaurant.address}</p>
+            <p><strong>Cidade:</strong> {restaurant.city}</p>
             {/* <p>Tipos de culinária favoritos: {restaurant.foodCategory}</p> */}
+            </div>
         </div>    
     )
 }

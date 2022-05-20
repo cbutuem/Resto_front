@@ -1,11 +1,13 @@
 import { api } from "../../API/Api"
 import React, {useEffect, useState} from "react"
 import DatePicker from "react-datepicker"
+import { Link, useNavigate } from "react-router-dom"
 
 import "react-datepicker/dist/react-datepicker.css"
 import { useParams } from "react-router-dom"
 
 export function Booking(){
+    const navigate = useNavigate();
 
     const [startDate, setStartDate] = useState(new Date())
     const [date, setDate] = useState("")
@@ -61,10 +63,10 @@ export function Booking(){
         <div className="booking">
 
         <h1>Reserva </h1>
-        <p>Data:</p>
+        <p><strong>Data:</strong></p>
         <DatePicker selected={startDate} onChange={handleDate} />
 
-        <p>Horário:</p>
+        <p><strong>Horário:</strong></p>
         <select name="horario" onChange={handleChange} defaultValue=''>
             <option value="" disabled hidden></option>
             <option value="18:00">18:00</option>
@@ -76,12 +78,12 @@ export function Booking(){
             <option value="00:00">00:00</option>
         </select>
 
-        <p>Número de Pessoas:</p>
+        <p><strong>Número de Pessoas:</strong></p>
         <input type="number" name="pessoas" onChange={handleChange}></input>
 
         <br/>
 
-        <button onClick={sendMail}>Enviar Email</button>
+        <button onClick={sendMail} className="booking2">Enviar Email</button>
         </div>
     )
 }

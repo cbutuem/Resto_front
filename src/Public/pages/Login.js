@@ -35,7 +35,7 @@ export function Login(){
             try{
                 const response = await api.post("/user/login", form)
                 localStorage.setItem("loggedInUser", JSON.stringify(response.data))
-                navigate("/homeuser")
+                navigate("/user/user-profile")
 
             }catch(error){console.log(error)}
         } 
@@ -45,7 +45,7 @@ export function Login(){
             try{
                 const response = await api.post("/restaurant/login", form)
                 localStorage.setItem("loggedInUser", JSON.stringify(response.data))
-                navigate("/restaurantuser")
+                navigate("/restaurant/user-profile")
 
             }catch(error){console.log(error)}
         }
@@ -80,23 +80,27 @@ export function Login(){
                         </div>  
                     </div>
                     <div className={style.boxRadio}>
-                        <span>Sou Cliente</span>
-                        <input type="radio" name="type" onClick={userClick} placeholder="usuario"
-                        className={style.boxbar}
-                        />  
-
-                        <span>Sou Restaurante</span>
-                        <input type="radio" name="type" onClick={restaurantClick} placeholder="usuario" 
+                        <div>
+                            <span className={style.boxRadioB}>Cliente</span>
+                            <input type="radio" name="type" onClick={userClick} placeholder="usuario"
                             className={style.boxbar}
-                        />
+                            />
+                        </div>  
+                        <div>
+                            <span className={style.boxRadioB}>Restaurante</span>
+                            <input type="radio" name="type" onClick={restaurantClick} placeholder="usuario" 
+                            className={style.boxbar}
+                            />
+                        </div>
                     </div>
-                    <button type="submit" onClick={handleSubmit}>Entrar</button>
-                 
+                    <div className={style.boxBut}>
+                        <button type="submit" onClick={handleSubmit}>Entrar</button>
+                    </div>
                 </form>
 
 
-                <span><Link to="/signup/user">Cadastrar</Link></span>
-                <span><Link to="/signup/restaurant">Cadastrar restaurante</Link></span>
+                <span><Link to="/signup/user" className={style.linkBut}>Cadastrar</Link></span>
+                <span><Link to="/signup/restaurant" className={style.linkBut}>Cadastrar restaurante</Link></span>
 
             </div>
         </>

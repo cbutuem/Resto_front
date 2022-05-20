@@ -20,7 +20,7 @@ export function SearchResults(props) {
 
 
     return (
-        <div>
+        <div className="SearchHi">
             
             <h1>Restaurantes Encontrados:</h1>
 
@@ -29,14 +29,14 @@ export function SearchResults(props) {
             return (result.name).toLocaleLowerCase().includes(props.test)}).map((result) => {
                 return (                    
                 
-                        <Link to={`/restaurantpage/${result._id}`}><p>{result.name}</p></Link>
+                        <Link to={`/restaurantpage/${result._id}`} className="SearchHi1"><p>{result.name}</p></Link>
                         
         )})}
 
         {results.filter((result) => {
             return (result.city).toLocaleLowerCase().includes(props.test)}).map((result) => {
                 return (                    
-                    <Link to={`/restaurantpage/${result._id}`}><p>{result.name}</p></Link>
+                    <Link to={`/restaurantpage/${result._id}`} className="SearchHi1"><p>{result.name}</p></Link>
         )})}
 
         {results.filter((result) => {
@@ -44,7 +44,7 @@ export function SearchResults(props) {
                 return (
                                   
 
-                    <Link to={`/restaurantpage/${result._id}`}><p>{result.name}</p></Link>
+                    <Link to={`/restaurantpage/${result._id}`} className="SearchHi1"><p>{result.name}</p></Link>
 
                     
         )})}

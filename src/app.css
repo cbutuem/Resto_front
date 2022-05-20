@@ -2,3 +2,29 @@
 *{
     font-family: 'Mali', cursive;
 }
+
+.PerfilRestaurante{
+    background-color: orange;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 5%;
+}
+.SearchHi{
+    margin: 20px;
+}
+.SearchHi1{
+    text-decoration: none;
+    font-size: 30px;
+    color:black;
+}
+
+.booking{
+    background-color: orange;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 5%; 
+    margin-bottom: 10px;
+}
+.booking2{
+    margin: 20px;;
+}

@@ -17,14 +17,14 @@ export function Home(){
     }, []);
     return(
         <>
-            <Carrossel/>
+            {/*<Carrossel/>*/}
             <div className={style.boxCat}>
                 <div className={style.boxFilter}>
                     <h2>Cidade</h2>
                     <div className={style.boxLine}>
                         {user.filter((user)=>{
                             return user.city.includes("São Paulo")}).map((restaurant)=>{
-                                return(<Link to={`/restaurantpage/${restaurant._id}`}><ul><h1>{restaurant.name}</h1></ul></Link>)})}
+                                return(<Link to={`/restaurantpage/${restaurant._id}`} className={style.link}><ul><h1>{restaurant.name}</h1></ul></Link>)})}
                     </div>
                 </div>
                 <div className={style.boxFilter}>
@@ -32,7 +32,7 @@ export function Home(){
                     <div className={style.boxLine}>
                         {user.filter((user)=>{
                             return user.foodCategory.includes("Japones")}).map((restaurant)=>{
-                                return(<Link to={`/restaurantpage/${restaurant._id}`}><ul><h1>{restaurant.name}</h1></ul></Link>)})}
+                                return(<Link to={`/restaurantpage/${restaurant._id}`} className={style.link}><ul><h1>{restaurant.name}</h1></ul></Link>)})}
                     </div>
                 </div>
                 <div className={style.boxFilter}>
@@ -40,7 +40,7 @@ export function Home(){
                     <div className={style.boxLine}>
                         {user.filter((user)=>{
                             return user.foodCategory.includes("Italiana")}).map((restaurant)=>{
-                                return(<Link to={`/restaurantpage/${restaurant._id}`}><ul><h1>{restaurant.name}</h1></ul></Link>)})}
+                                return(<Link to={`/restaurantpage/${restaurant._id}`} className={style.link}><ul><h1>{restaurant.name}</h1></ul></Link>)})}
                     </div>        
                 </div>
             </div>
