@@ -16,24 +16,23 @@ export function Login(){
 
     useEffect(() => {
         async function fetchData(){
-            const response = await api.get('restaurants/all-restaurants');
+            const response = await api.get('restaurant/all-restaurants');
             setUser(response.data);
         }
         fetchData();
     },[])
 
-    useEffect(() => {
-        async function fetchData(){
-            const response = await api.post('user/signup');
+
+        async function handleLogin(){
+            const response = await api.post('user/signup', form);
             setUser(response.data);
         }
-        fetchData();
-    },[])
+
     
     
     return(
         <>
-            <form>
+            <form onSubmit={handleLogin}>
                 <span >
                     <label >Email</label>
                     <input 

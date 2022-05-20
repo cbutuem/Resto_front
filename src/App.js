@@ -19,13 +19,12 @@ function App() {
       <NavBar setTest={setTest}/>
     <Routes>
       <Route path="/search" element ={<SearchResults test={test} />}/>
-      <Route path="/user/user-profile" element={<UserProfile />}/>
-      <Route path="/" element={<Login/>}/>
-      <Route path="/signup/user" element={<User_SignUp/>}/>
-      <Route path="/signup/restaurant" element={<Restaurant_SignUp/>}/>
+      <Route path="/user/user-profile" element={<UserProfile />} />
+      <Route path="/" element={<Login />} />
+      <Route path="/signup/user" element={<User_SignUp />} />
+      <Route path="/signup/restaurant" element={<Restaurant_SignUp />}/>
 
     </Routes>
-      {/* <UserProfile /> */}
       <Carrossel />
       <Booking />
     </div>

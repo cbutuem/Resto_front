@@ -1,14 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import { api } from "../../API/Api";
-import { AuthContext } from "../../Contexts/authContexts";
+
 
 export function UserProfile() {
 
-    const { loggedInUser } = useContext(AuthContext);
-    const [user, setUser] = useState({
-        name: "",
-        email: ""
-    });
+
+    const [user, setUser] = useState({});
 
     useEffect(() => {
         async function fetchUser() {
@@ -21,12 +18,12 @@ export function UserProfile() {
     return 
         <div>
             <h1>Perfil do Usuário</h1>
-            <p>Imagem: {user.imgUser}</p>
+            <p>Imagem: <img src={user.imgUser} alt="user picture"/></p>
             <p>Nome: {user.name}</p>
             <p>Endereço de E-mail: {user.email}</p>
             <p>Data de Nascimento: {user.birth}</p>
             <p>Cidade: {user.city}</p>
-            <p>Tipos de culinária favoritos: {user.favType}</p>
+            {/* <p>Tipos de culinária favoritos: {user.favType}</p> Fazer Map */}
         </div>
     
 }
