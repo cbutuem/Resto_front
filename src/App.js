@@ -9,6 +9,8 @@ import { NavBar } from "./Components/NavBar";
 import { SearchResults } from "./Components/SearchPage";
 import { UserProfile } from "./Components/UserProfile";
 import {Login} from "../src/Public/pages/Login";
+import {Home} from "../src/Public/pages/Home"
+import "./app.css"
 
 
 function App() {
@@ -20,12 +22,11 @@ function App() {
     <Routes>
       <Route path="/search" element ={<SearchResults test={test} />}/>
       <Route path="/user/user-profile" element={<UserProfile />}/>
-      <Route path="/" element={<Login/>}/>
+      <Route path="/login" element={<Login/>}/>
       <Route path="/signup/user" element={<User_SignUp/>}/>
       <Route path="/signup/restaurant" element={<Restaurant_SignUp/>}/>
-
-    </Routes>
-      <Carrossel />
+      <Route path="/" element={<Home/>}/>
+    </Routes> 
       <Booking />
     </div>
   );

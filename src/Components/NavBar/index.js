@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import style from "./navbar.module.css"
 
 
 export function NavBar(props) {
@@ -8,10 +9,15 @@ export function NavBar(props) {
     }
 
     return (
-        <div>
-            <input type="search" placeholder="Busque por um restaurante por nome ou cidade!" onChange={handleChange}/>
-            <Link to={"/search"}><button>Buscar</button></Link>
-            <Link to={"/Login"}><button>Login</button></Link>
+        <div className = {style.bar}>
+            <h1>Resto</h1>
+            <div className = {style.search}>
+                <span className = {style.inputBar}><input type="search" placeholder="Busque por um restaurante por nome ou cidade!" onChange={handleChange}/></span>
+                <span className = {style.buttonBar}><Link to={"/search"}><button>Buscar</button></Link></span>
+            </div>
+            <div className = {style.login}>
+            <span><Link to={"/Login"}><button>Login</button></Link></span>
+            </div>
         </div>
     )
 }

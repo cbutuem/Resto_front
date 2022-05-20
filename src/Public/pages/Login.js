@@ -58,7 +58,7 @@ export function Login(){
                 
             </form>
             <p><Link to="/signup/user">Cadastrar</Link></p>
-            <Link to="/singip/restaurant">Cadastrar restaurante</Link>
+            <Link to="/signup/restaurant">Cadastrar restaurante</Link>
 
         </>
     );

@@ -57,7 +57,6 @@ export function SearchResults(props) {
                                   
                     <li key={result.id}>
                         <p>{result.name}</p>
-                        <p></p>
                     </li>
                     
         )})}
