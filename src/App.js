@@ -21,11 +21,11 @@ function App() {
     <Routes>
       <Route path="/" />
       <Route path="/search" element ={<SearchResults test={test} />}/>
-      <Route path="/user/user-profile" element={<UserProfile />}/>
-      <Route path="/restaurant/user-profile" element={<RestaurantProfile />}/>
-      <Route path="/login" element={<Login/>}/>
-      <Route path="/signup/user" element={<User_SignUp/>}/>
-      <Route path="/signup/restaurant" element={<Restaurant_SignUp/>}/>
+      <Route path="/user/user-profile" element={<UserProfile />} />
+      <Route path="/restaurant/user-profile" element={<RestaurantProfile />} />
+      <Route path="/login" element={<Login/>} />
+      <Route path="/signup/user" element={<User_SignUp />} />
+      <Route path="/signup/restaurant" element={<Restaurant_SignUp/>} />
 
     </Routes>
       <Carrossel />
