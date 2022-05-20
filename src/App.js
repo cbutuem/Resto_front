@@ -10,6 +10,8 @@ import { SearchResults } from "./Components/SearchPage";
 import { UserProfile } from "./Components/UserProfile";
 import { Login } from "../src/Public/pages/Login";
 import { RestaurantProfile } from "./Components/RestaurantProfile";
+import { RestaurantPage } from "./User/pages/RestaurantPage"
+
 
 
 function App() {
@@ -21,17 +23,18 @@ function App() {
     <Routes>
       <Route path="/" />
       <Route path="/search" element ={<SearchResults test={test} />}/>
-      <Route path="/user/user-profile" element={<UserProfile />} />
-      <Route path="/restaurant/user-profile" element={<RestaurantProfile />} />
-      <Route path="/login" element={<Login/>} />
-      <Route path="/signup/user" element={<User_SignUp />} />
-      <Route path="/signup/restaurant" element={<Restaurant_SignUp/>} />
+      <Route path="/user/user-profile" element={<UserProfile />}/>
+      <Route path="/restaurant/user-profile" element={<RestaurantProfile />}/>
+      <Route path="/login" element={<Login/>}/>
+      <Route path="/signup/user" element={<User_SignUp/>}/>
+      <Route path="/signup/restaurant" element={<Restaurant_SignUp/>}/>
+      <Route path="/restaurantpage/:restaurantId" element={<RestaurantPage/>}/>
+      <Route path="/booking/:restaurantId" element={<Booking />}/>
 
     </Routes>
-      <Carrossel />
-      <Booking />
     </div>
   );
 }
 
 export default App;
+

@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react"
 import DatePicker from "react-datepicker"
 
 import "react-datepicker/dist/react-datepicker.css"
+import { useParams } from "react-router-dom"
 
 export function Booking(){
 
@@ -45,11 +46,12 @@ export function Booking(){
         setBookForm({ ...bookForm, [event.target.name]: event.target.value, data: date, user: user.name, usermail: user.email});
     }
 
+    const { restaurantId} = useParams()
     async function sendMail(){
         try{
             console.log(bookForm)
             console.log(user)
-            await api.post("/mail/sendmail/628249a4e691f4d308080eb5", bookForm)
+            await api.post(`/mail/sendmail/${restaurantId}`, bookForm)
             
         } catch(error){
             console.log(error)}
