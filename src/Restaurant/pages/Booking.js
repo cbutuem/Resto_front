@@ -18,8 +18,10 @@ export function Booking(){
 
     useEffect(()=>{
         const usuario = localStorage.getItem("loggedInUser")
+        if (usuario) {
         const format = JSON.parse(usuario)
         setUser(format.user)
+        }
     },[])
 
     function handleDate(date){
