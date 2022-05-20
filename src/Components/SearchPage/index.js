@@ -43,7 +43,9 @@ export function SearchResults(props) {
             return (result.foodCategory).includes(props.test)}).map((result) => {
                 return (
                                   
+
                     <Link to={`/restaurantpage/${result._id}`}><p>{result.name}</p></Link>
+
                     
         )})}
             

@@ -1,0 +1,29 @@
+.boxLogin{
+    background-color: orange;
+    margin: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.boxInput{
+    display: flex;
+    flex-direction: column;
+}
+.boxInput input{
+    max-width: 200px;
+}
+.boxRadio label{
+    display: flex;
+    flex-direction: row; 
+    max-height: 20px; 
+}
+.boxRadio{
+    max-width: 500px;
+    max-height: 20px;
+    display: flex;
+    flex-direction: row; 
+    justify-content: center;
+   
+}

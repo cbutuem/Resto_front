@@ -1,7 +1,8 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom"
 import { api } from "../../API/Api"
+import style from "./login.module.css"
 export function Login(){
     const navigate = useNavigate();
 
@@ -34,11 +35,11 @@ export function Login(){
             try{
                 const response = await api.post("/user/login", form)
                 localStorage.setItem("loggedInUser", JSON.stringify(response.data))
-
                 navigate("/homeuser")
 
             }catch(error){console.log(error)}
         } 
+
 
         if(profile === 'restaurant'){
             try{
@@ -53,38 +54,51 @@ export function Login(){
     
     return(
         <>
-            <form>
-                <span >
-                    <label >Email</label>
-                    <input 
-                        type="text"
-                        name='email'
-                        value={form.email}
-                        onChange={handleChange}>
-                    </input>
-                </span>
-                <span >
-                    <label >Senha</label>
-                    <input 
-                        type="password"
-                        name='password'
-                        value={form.password}
-                        onChange={handleChange}>
-                    </input>
-                </span>
-               
-                <input type="radio" name="type" onClick={userClick} placeholder="usuario"/>  Sou Cliente
-            
-               
-                <input type="radio" name="type" onClick={restaurantClick} placeholder="usuario" /> <br/> Sou restaurante
-                
-                <button type="submit" onClick={handleSubmit}>Entrar</button>
-            </form>
 
-            
-            <p><Link to="/signup/user">Cadastrar</Link></p>
-            <Link to="/signup/restaurant">Cadastrar restaurante</Link>
+            <div className={style.boxLogin}>
+                <form>
+                    <div className={style.boxInput}>
+                        <div>
+                            <span>
+                                <label >Email</label>
+                                <input 
+                                    type="text"
+                                    name='email'
+                                    value={form.email}
+                                    onChange={handleChange}>
+                                </input>
+                            </span>
+                            <span >
+                                <label >Senha</label>
+                                <input 
+                                    type="password"
+                                    name='password'
+                                    value={form.password}
+                                    onChange={handleChange}>
+                                </input>
+                            </span>
+                        </div>  
+                    </div>
+                    <div className={style.boxRadio}>
+                        <span>Sou Cliente</span>
+                        <input type="radio" name="type" onClick={userClick} placeholder="usuario"
+                        className={style.boxbar}
+                        />  
 
+                        <span>Sou Restaurante</span>
+                        <input type="radio" name="type" onClick={restaurantClick} placeholder="usuario" 
+                            className={style.boxbar}
+                        />
+                    </div>
+                    <button type="submit" onClick={handleSubmit}>Entrar</button>
+                 
+                </form>
+
+
+                <span><Link to="/signup/user">Cadastrar</Link></span>
+                <span><Link to="/signup/restaurant">Cadastrar restaurante</Link></span>
+
+            </div>
         </>
     );
 }

@@ -12,6 +12,9 @@ import { Login } from "../src/Public/pages/Login";
 import { RestaurantProfile } from "./Components/RestaurantProfile";
 import { RestaurantPage } from "./User/pages/RestaurantPage"
 
+import {Login} from "../src/Public/pages/Login";
+import {Home} from "../src/Public/pages/Home"
+import "./app.css"
 
 
 function App() {
@@ -32,6 +35,9 @@ function App() {
       <Route path="/booking/:restaurantId" element={<Booking />}/>
 
     </Routes>
+
+     
+
     </div>
   );
 }

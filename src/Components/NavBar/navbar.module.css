@@ -1,0 +1,31 @@
+.bar{
+    background-color: orange;
+    padding: 30px;
+    padding-left: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.search{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.inputBar{
+    display: flex;
+    border:rgb(201, 131, 2) solid;
+    border-radius: 5%;
+    margin: 20px;
+}
+input{
+    border-radius: 5%;
+    width: 500px;
+}
+button{
+    border-radius: 20%;
+    background-color:rgb(201, 131, 2); 
+    border: 1px black solid;
+    color:white;
+    font-weight: 400;
+    box-shadow: 0px 0px 4px black;
+}

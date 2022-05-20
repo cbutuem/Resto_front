@@ -1,0 +1,35 @@
+.boxCat{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+.boxLine{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 3px black solid;
+}
+.boxLine ul{
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+}
+
+.boxLine h1{
+    display: flex;
+    text-align: center;
+    flex-direction: row;
+    background-color: orange;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+.boxFilter{
+    display: flex;
+    flex-direction: column;
+    border-radius: 2%;
+    margin: 200px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
