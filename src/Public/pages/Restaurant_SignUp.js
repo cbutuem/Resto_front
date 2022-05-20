@@ -44,7 +44,7 @@ export function Restaurant_SignUp(props){
             const uploadData = new FormData();
             uploadData.append("picture", img);
 
-            const response = await api.post("/upload-image", uploadData);
+            const response = await api.post("/image/upload-image", uploadData);
             return response.data.url;
 
         }   catch (error) {
@@ -56,7 +56,7 @@ export function Restaurant_SignUp(props){
         event.preventDefault();
         try {
         const imgURL = await handleUpload();
-        await api.post("/restaurant/signup", { ...form, img: imgURL, foodCategory: cat});
+        await api.post("/restaurant/signup", { ...form, imgUser: imgURL, foodCategory: cat});
         navigate("/login");
 
     }   catch (error) {

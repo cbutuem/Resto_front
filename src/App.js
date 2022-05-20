@@ -8,6 +8,10 @@ import { useState } from "react";
 import { NavBar } from "./Components/NavBar";
 import { SearchResults } from "./Components/SearchPage";
 import { UserProfile } from "./Components/UserProfile";
+import { Login } from "../src/Public/pages/Login";
+import { RestaurantProfile } from "./Components/RestaurantProfile";
+import { RestaurantPage } from "./User/pages/RestaurantPage"
+
 import {Login} from "../src/Public/pages/Login";
 import {Home} from "../src/Public/pages/Home"
 import "./app.css"
@@ -20,17 +24,23 @@ function App() {
     <div className="App">
       <NavBar setTest={setTest}/>
     <Routes>
+      <Route path="/" />
       <Route path="/search" element ={<SearchResults test={test} />}/>
       <Route path="/user/user-profile" element={<UserProfile />}/>
+      <Route path="/restaurant/user-profile" element={<RestaurantProfile />}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/signup/user" element={<User_SignUp/>}/>
       <Route path="/signup/restaurant" element={<Restaurant_SignUp/>}/>
-      <Route path="/" element={<Home/>}/>
-      <Route path="/booking" element={<Booking />}/>
-    </Routes> 
+      <Route path="/restaurantpage/:restaurantId" element={<RestaurantPage/>}/>
+      <Route path="/booking/:restaurantId" element={<Booking />}/>
+
+    </Routes>
+
      
+
     </div>
   );
 }
 
 export default App;
+

@@ -5,10 +5,11 @@ import style from "./navbar.module.css"
 export function NavBar(props) {
 
     function handleChange(e) {
-        props.setTest((e.target.value).toLocaleLowerCase())
+        props.setTest(e.target.value)
     }
 
     return (
+
         <div className = {style.bar}>
             <h1>Resto</h1>
             <div className = {style.search}>

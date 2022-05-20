@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom"
 import { api } from "../../API/Api"
@@ -34,11 +35,11 @@ export function Login(){
             try{
                 const response = await api.post("/user/login", form)
                 localStorage.setItem("loggedInUser", JSON.stringify(response.data))
-
                 navigate("/homeuser")
 
             }catch(error){console.log(error)}
         } 
+
 
         if(profile === 'restaurant'){
             try{
@@ -53,6 +54,7 @@ export function Login(){
     
     return(
         <>
+
             <div className={style.boxLogin}>
                 <form>
                     <div className={style.boxInput}>

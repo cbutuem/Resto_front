@@ -2,7 +2,7 @@ export function Botao(props){
     return(
         <>
             <div>
-                    return (
+                return (
                         <small className="m-1" style={{ color: "gray" }}>
                             {currentTag}
                         </small>
