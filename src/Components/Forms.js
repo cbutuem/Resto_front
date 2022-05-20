@@ -1,19 +1,19 @@
 import style from "./Forms.module.css"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
-import { api } from "../../API/Api";
+import { api } from "../API/Api";
 
-export function User_SignUp(props){
+export function Forms(props){
     const navigate = useNavigate();
     const [cat, setCat] = useState([])
     const [date, setDate] = useState({
-        day:"",
-        month:"",
-        year:"",
+        dia:"",
+        mes:"",
+        ano:"",
     });
     const [form, setForm] = useState({
         name: "",
-        // birth: "",
+        birth: ``,
         email: "",
         password: "",
         city: "",
@@ -25,7 +25,7 @@ export function User_SignUp(props){
 
     function handleDate(event){
         setDate({ ...date, [event.target.name]: event.target.value });
-        setForm({ ...form, 'birth': `${date.year}-${date.month}-${date.day}`});
+        setForm({ ...form, 'birth': `${date.ano}-${date.mes}-${date.dia}`});
         console.log(form);
     }
     function handleChange(event) {
@@ -33,9 +33,12 @@ export function User_SignUp(props){
         console.log("HUNT",form);
     }
 
+
     function handleImage(event) {
         setImg(event.target.files[0]);
     }
+
+    
 
     async function handleUpload() {
         try {
@@ -43,6 +46,8 @@ export function User_SignUp(props){
             uploadData.append("picture", img);
 
             const response = await api.post("/image/upload-image", uploadData);
+
+            setForm({...form, imgUser: response.data.url})
             return response.data.url;
 
         }   catch (error) {
@@ -50,11 +55,29 @@ export function User_SignUp(props){
         }
     };
 
+     //LÓGICA DE TAGS
+     function handleclick(event){
+        const inicial = [...cat]
+           if(inicial.includes(event.target.value)){
+                const index = inicial.indexOf(event.target.value)
+                inicial.splice(index,1)
+                setCat(inicial)
+            }else{
+                inicial.push(event.target.value)
+                setCat(inicial)
+            }
+            console.log(cat, "cat final")
+        }
+
     async function handleSubmit(event) {
         event.preventDefault();
+
         try {
-        const imgURL = await handleUpload();
-        await api.post("/user/signup", { ...form, imgUser: imgURL,favType: cat });
+        const imgURL = await handleUpload()
+        
+
+        await api.post("/user/signup",{...form, imgUser: imgURL, favType: cat});
+
         navigate("/login");
 
     }   catch (error) {
@@ -77,24 +100,29 @@ export function User_SignUp(props){
         <>
             <div className = {style.boxForm}>
                 <form  onSubmit={handleSubmit}>
+
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Nome</label>
                         <input className = {style.inputSize} name="name" value={form.name} onChange={handleChange}></input>
                     </span>
+
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Data de Nascimento</label>
-                        <input className = {style.data} placeholder="dia" name="day"  onChange={handleDate}></input>
-                        <input className = {style.data} placeholder="mes" name="month"  onChange={handleDate}></input>
-                        <input className = {style.data} placeholder="ano" name="year"  onChange={handleDate}></input>
+                        <input className = {style.data} placeholder="dia" name="dia" value={date.dia} onChange={handleDate}></input>
+                        <input className = {style.data} placeholder="mes" name="mes" value={date.mes} onChange={handleDate}></input>
+                        <input className = {style.data} placeholder="ano" name="ano" value={date.ano} onChange={handleDate}></input>
                     </span>
+
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Email</label>
                         <input className = {style.inputSize} name="email" value={form.email} onChange={handleChange}></input>
                     </span>
+
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Cidade</label>
-                        <input className = {style.inputSize} name="city" value={form.city} onChange={handleChange}></input>
+                        <input className = {style.inputSize} name="cidade" value={form.cidade} onChange={handleChange}></input>
                     </span>
+
                     <span className= {style.lineBox}>
                         <label className = {style.titleCat}>Gastronomia favorita</label>
                         <input className = {style.inputSize} placeholder="Gastronomia favorita"

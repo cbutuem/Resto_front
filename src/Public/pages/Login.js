@@ -73,7 +73,7 @@ export function Login(){
                     </input>
                 </span>
                
-                <input type="radio" name="type" onClick={userClick} placeholder="usuario"/>  Sou usuário
+                <input type="radio" name="type" onClick={userClick} placeholder="usuario"/>  Sou Cliente
             
                
                 <input type="radio" name="type" onClick={restaurantClick} placeholder="usuario" /> <br/> Sou restaurante
